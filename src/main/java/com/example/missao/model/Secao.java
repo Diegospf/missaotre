@@ -1,39 +1,55 @@
 package com.example.missao.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Secao {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numero;
-    private String zona;
-    private String municipio;
-    private String polo;
+    private Long id;
+
+    private int numero;
+    @ManyToOne
+    private Zona zona;
+    @ManyToOne
+    private Municipio municipio;
+    @ManyToOne
+    private Polo polo;
 
     public Secao(){
 
     }
-    public String getZona() {
+    //TODO LOMBOK
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public Zona getZona() {
         return zona;
     }
 
-    public void setZona(String zona) {
+    public void setZona(Zona zona) {
         this.zona = zona;
     }
 
-    public String getMunicipio() {
+    public Municipio getMunicipio() {
         return municipio;
     }
 
-    public void setMunicipio(String municipio) {
+    public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
     }
 
-    public String getPolo() {
+    public Polo getPolo() {
         return polo;
     }
 
-    public void setPolo(String polo) {
+    public void setPolo(Polo polo) {
         this.polo = polo;
     }
 }

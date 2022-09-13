@@ -1,10 +1,21 @@
 package com.example.missao.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Polo {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long numero;
-    private String municipioSede;
+    @OneToMany(mappedBy = "polo")
+    private List<Municipio> municipioSede= new ArrayList<>();
+
+    public List<Municipio> getMunicipioSede() {
+        return municipioSede;
+    }
+
+    public void setMunicipioSede(List<Municipio> municipioSede) {
+        this.municipioSede = municipioSede;
+    }
 }
