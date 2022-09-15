@@ -6,7 +6,9 @@ import java.util.List;
 
 @Entity
 public class Municipio {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private Long codTse;
     private String nome;
     @ManyToMany(mappedBy = "municipios")
@@ -22,6 +24,14 @@ public class Municipio {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Long getCodTse() {
+        return codTse;
+    }
+
+    public void setCodTse(Long codTse) {
+        this.codTse = codTse;
     }
 
     public List<Zona> getZonas() {

@@ -6,7 +6,9 @@ import java.util.List;
 
 @Entity
 public class Polo {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private Long numero;
     @OneToMany(mappedBy = "polo")
     private List<Municipio> municipioSede= new ArrayList<>();
@@ -17,5 +19,13 @@ public class Polo {
 
     public void setMunicipioSede(List<Municipio> municipioSede) {
         this.municipioSede = municipioSede;
+    }
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
     }
 }

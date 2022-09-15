@@ -9,7 +9,7 @@ public class Secao {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int numero;
+    private Long numero;
     @ManyToOne
     private Zona zona;
     @ManyToOne
@@ -20,12 +20,16 @@ public class Secao {
     public Secao(){
 
     }
+    public Long getId() {
+        return id;
+    }
+
     //TODO LOMBOK
-    public int getNumero() {
+    public Long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 
