@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-@Controller @RequestMapping("home")
+@Controller
 public class HelloController {
     @Autowired
     private SecaoRepository secaoRepository;
@@ -78,9 +78,9 @@ public class HelloController {
         return "teste";
     }
 
-    @GetMapping("createZona")
-    public String createZona(Model model){
-        return "hello";
+    @GetMapping("home")
+    public String home(Model model){
+        return "home";
     }
 
 }

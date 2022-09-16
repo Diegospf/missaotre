@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface MunicipioRepository extends JpaRepository<Municipio, Long> {
-    @Query("select distinct m.nome from Municipio m where m.polo.numero = :#{#poloId} order by m.nome")
-    List<String> cidadesPorPolo(@Param("poloId") Long poloId);
+    @Query("select distinct m from Municipio m where m.polo.numero = :#{#poloId} order by m.nome")
+    List<Municipio> cidadesPorPolo(@Param("poloId") Long poloId);
 }
