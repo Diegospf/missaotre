@@ -1,6 +1,7 @@
 package com.example.missao.controller;
 
 import com.example.missao.dto.TransformCsvRoot;
+import com.example.missao.dto.TransformMunicipio;
 import com.example.missao.dto.TransformSecao;
 import com.example.missao.dto.TransformZona;
 import com.example.missao.model.Municipio;
@@ -50,7 +51,8 @@ public class HelloController {
         poloRepository.saveAll(TransformCsvRoot.polosTable.values());
         zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
         municipioRepository.saveAll(TransformCsvRoot.municipiosTable.values());
-        TransformZona.update();
+        TransformMunicipio.update();
+        municipioRepository.saveAll(TransformCsvRoot.municipiosTable.values());
         zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
         secaoRepository.saveAll(secoes);
         return "hello";

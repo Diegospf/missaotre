@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TransformMunicipio {
 
-    private List<Root> listaRoot;
+    private static List<Root> listaRoot;
 
     public TransformMunicipio(List<Root> listaRoot) {
         this.listaRoot = listaRoot;
@@ -20,17 +20,31 @@ public class TransformMunicipio {
         municipio.setCodTse(codTse);
         municipio.setNome(nomeMunicipio);
         municipio.setPolo(TransformCsvRoot.polosTable.get(numPolo));
-        List<Zona> zona = municipio.getZonas();
-        if (TransformCsvRoot.zonasTable.get(numZona) == null){
-            zona.add(TransformCsvRoot.zonasTable.get(numZona));
-        }
-        if(!zona.contains(TransformCsvRoot.zonasTable.get(numZona))){
-            municipio.getZonas().add(TransformCsvRoot.zonasTable.get(numZona));
-        }
+//        List<Zona> zona = municipio.getZonas();
+//        if(!zona.contains(TransformCsvRoot.zonasTable.get(numZona))){
+//            municipio.getZonas().add(TransformCsvRoot.zonasTable.get(numZona));
+//        }
         TransformCsvRoot.municipiosTable.put(codTse, municipio);
     }
 
     public void addSecaoInMunicipio(Long codTse, List<Secao> secoes){
         TransformCsvRoot.municipiosTable.get(codTse).setSecoes(secoes);
+    }
+
+    public static void update(){
+        for (Municipio m : TransformCsvRoot.municipiosTable.values()){
+            for (Root root : listaRoot){
+                if(Long.parseLong(root.getCodMunicipioTse()) == m.getCodTse()){
+                    for (Zona z : TransformCsvRoot.zonasTable.values()){
+                        if (Long.parseLong(root.getNumZona()) == z.getNumero()){
+                            if (!(z.getMunicipios().contains(m)) && !(m.getZonas().contains(z))){
+                                m.getZonas().add(z);
+                                z.getMunicipios().add(m);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
