@@ -20,10 +20,6 @@ public class TransformMunicipio {
         municipio.setCodTse(codTse);
         municipio.setNome(nomeMunicipio);
         municipio.setPolo(TransformCsvRoot.polosTable.get(numPolo));
-//        List<Zona> zona = municipio.getZonas();
-//        if(!zona.contains(TransformCsvRoot.zonasTable.get(numZona))){
-//            municipio.getZonas().add(TransformCsvRoot.zonasTable.get(numZona));
-//        }
         TransformCsvRoot.municipiosTable.put(codTse, municipio);
     }
 
