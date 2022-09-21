@@ -1,4 +1,4 @@
-package com.example.missao.dto;
+package com.example.missao.dto.requisicao;
 
 public class RequisicaoPolo {
     private String numeroPolo;

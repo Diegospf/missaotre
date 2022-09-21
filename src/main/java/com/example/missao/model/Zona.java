@@ -11,6 +11,17 @@ public class Zona {
     @ManyToMany
     private List<Municipio> municipios = new ArrayList<>();
 
+    @OneToOne
+    private Municipio sede;
+
+    public Municipio getSede() {
+        return sede;
+    }
+
+    public void setSede(Municipio sede) {
+        this.sede = sede;
+    }
+
     public Long getNumero() {
         return numero;
     }

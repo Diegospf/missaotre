@@ -1,4 +1,4 @@
-package com.example.missao.dto;
+package com.example.missao.dto.transform;
 
 import com.example.missao.model.*;
 

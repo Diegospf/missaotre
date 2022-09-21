@@ -1,9 +1,6 @@
 package com.example.missao.controller;
 
-import com.example.missao.dto.TransformCsvRoot;
-import com.example.missao.dto.TransformMunicipio;
-import com.example.missao.dto.TransformSecao;
-import com.example.missao.dto.TransformZona;
+import com.example.missao.dto.transform.*;
 import com.example.missao.model.Municipio;
 import com.example.missao.model.Root;
 import com.example.missao.model.Secao;
@@ -12,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -20,7 +16,7 @@ import java.util.List;
 
 
 @Controller
-public class HelloController {
+public class HomeController {
     @Autowired
     private SecaoRepository secaoRepository;
     @Autowired
@@ -31,17 +27,12 @@ public class HelloController {
     private PoloRepository poloRepository;
     @Autowired
     private RootRepository rootRepository;
-    @GetMapping("hello")
-    public String hello(Model model) {
-        model.addAttribute("nome", "Mundo");
-        return "hello";
-    }
 
     @GetMapping("root")
     public String root(Model model) throws IOException {
         List<Root> roots = TransformCsvRoot.toRoot();
         rootRepository.saveAll(roots);
-        return "root";
+        return "home";
     }
 
     @GetMapping("preencherTabelas")
@@ -54,28 +45,12 @@ public class HelloController {
         TransformMunicipio.update();
         municipioRepository.saveAll(TransformCsvRoot.municipiosTable.values());
         zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
+        TransformZona.update("src/main/resources/zonas-sedes.csv");
+        zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
+        TransformPolo.update("src/main/resources/polos-sedes.csv");
+        poloRepository.saveAll(TransformCsvRoot.polosTable.values());
         secaoRepository.saveAll(secoes);
-        return "hello";
-    }
-
-    @GetMapping("teste")
-    public String teste(Model model){
-        List<Long> listTodosPolos = rootRepository.numerosPolos();
-        List<String> listCidade = rootRepository.nomesCidades();
-        List<String> listCidadePorPolo = rootRepository.cidadesPorPolo("1");
-        List<String> listCidadePorSecao = rootRepository.cidadesPorSecao("1");
-        String poloDaCidade = rootRepository.poloPorCidade("25313");
-        model.addAttribute("list",listTodosPolos);
-        model.addAttribute("cidades", listCidade);
-        model.addAttribute("cidadesPorPolo", listCidadePorPolo);
-        model.addAttribute("cidadesPorSecao", listCidadePorSecao);
-        model.addAttribute("poloDaCidade", poloDaCidade);
-
-        Municipio m = new Municipio();
-
-
-        Collections.sort(listTodosPolos);
-        return "teste";
+        return "home";
     }
 
     @GetMapping("home")
