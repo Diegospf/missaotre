@@ -143,33 +143,5 @@ public class SearchController {
             return "redirect:/home";
         }
     }
-    //SEÇÃO
-    @GetMapping("secao")
-    public  String zona(@Valid RequisicaoSecao requisicao, Model model){
-        List<Long> secoes = secaoRepository.numerosSecaoOrdenada();
-        model.addAttribute("secoes", secoes);
-        return "search/secao";
-    }
-
-    @GetMapping("secao/secaoSrc")
-    public  String secaoSrc(@Valid RequisicaoSecao requisicao, Model model){
-        Long numero = requisicao.getNumeroSecao();
-        List<Secao> secoes = secaoRepository.findSecao(numero);
-        model.addAttribute("secoes", secoes);
-        model.addAttribute("numero", requisicao.getNumeroSecao());
-
-        if(requisicao.getTipoDaPesquisa().equals("todos")){
-            return "search/secao/todosBySecao";
-        }
-        else if(requisicao.getTipoDaPesquisa().equals("zona")){
-            secoes = secaoRepository.findSecaoOrderByZona(numero);
-            model.addAttribute("secoes", secoes);
-            return "search/secao/zonaBySecao";
-        } else if(requisicao.getTipoDaPesquisa().equals("polo")){
-            return "search/secao/poloBySecao";
-        } else{
-            return "redirect:/home";
-        }
-    }
 
 }

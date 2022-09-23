@@ -22,6 +22,9 @@ public interface SecaoRepository extends JpaRepository<Secao, Long> {
     @Query("select distinct s from Secao s where s.numero = :#{#numero} order by s.polo.numero, s.zona.numero")
     List<Secao> findSecao(@Param("numero") Long numero);
 
+    @Query("select distinct s from Secao s where s.numero = :#{#numero} order by s.numero")
+    List<Secao> findSecaoOrder(@Param("numero") Long numero);
+
     @Query("select distinct s from Secao s where s.numero = :#{#numero} order by s.zona.numero")
     List<Secao> findSecaoOrderByZona(@Param("numero") Long numero);
 

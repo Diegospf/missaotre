@@ -5,8 +5,8 @@
 <div th:replace="~{base :: logo}"></div>
 <div class="container">
   <div class="card">
-    <div class="card-header text-bg-primary h4 pt-2 pb-2 text-left">
-      <div>Municipio <span th:text="${municipio.nome}"></span></div>
+    <div class="card-header text-bg-secondary h4 pt-2 pb-2 text-left">
+      <div>Municipio <span th:text="${municipio.codTse}"></span> - <span th:text="${municipio.nome}"></span>: Quantidade de Seções</div>
     </div>
     <div class="table-responsive">
       <table class="table">
