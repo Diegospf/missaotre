@@ -1,18 +1,10 @@
 package com.example.missao.controller;
 
-import com.example.missao.dto.transform.*;
-import com.example.missao.model.Municipio;
-import com.example.missao.model.Root;
-import com.example.missao.model.Secao;
 import com.example.missao.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 
 @Controller
@@ -53,9 +45,9 @@ public class HomeController {
 //        return "home";
 //    }
 
-    @GetMapping("home")
+    @GetMapping("/")
     public String home(Model model){
-        return "home";
+        return "index";
     }
 
 }
