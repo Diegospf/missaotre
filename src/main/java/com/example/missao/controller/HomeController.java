@@ -28,30 +28,30 @@ public class HomeController {
     @Autowired
     private RootRepository rootRepository;
 
-    @GetMapping("root")
-    public String root(Model model) throws IOException {
-        List<Root> roots = TransformCsvRoot.toRoot();
-        rootRepository.saveAll(roots);
-        return "home";
-    }
-
-    @GetMapping("preencherTabelas")
-    public String preencherTabelas(Model model) throws IOException {
-        TransformSecao transformSecao = new TransformSecao(rootRepository.findAll());
-        List<Secao> secoes = transformSecao.generateSecaoTable();
-        poloRepository.saveAll(TransformCsvRoot.polosTable.values());
-        zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
-        municipioRepository.saveAll(TransformCsvRoot.municipiosTable.values());
-        TransformMunicipio.update();
-        municipioRepository.saveAll(TransformCsvRoot.municipiosTable.values());
-        zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
-        TransformZona.update("src/main/resources/zonas-sedes.csv");
-        zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
-        TransformPolo.update("src/main/resources/polos-sedes.csv");
-        poloRepository.saveAll(TransformCsvRoot.polosTable.values());
-        secaoRepository.saveAll(secoes);
-        return "home";
-    }
+//    @GetMapping("root")
+//    public String root(Model model) throws IOException {
+//        List<Root> roots = TransformCsvRoot.toRoot();
+//        rootRepository.saveAll(roots);
+//        return "home";
+//    }
+//
+//    @GetMapping("preencherTabelas")
+//    public String preencherTabelas(Model model) throws IOException {
+//        TransformSecao transformSecao = new TransformSecao(rootRepository.findAll());
+//        List<Secao> secoes = transformSecao.generateSecaoTable();
+//        poloRepository.saveAll(TransformCsvRoot.polosTable.values());
+//        zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
+//        municipioRepository.saveAll(TransformCsvRoot.municipiosTable.values());
+//        TransformMunicipio.update();
+//        municipioRepository.saveAll(TransformCsvRoot.municipiosTable.values());
+//        zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
+//        TransformZona.update("src/main/resources/zonas-sedes.csv");
+//        zonaRepository.saveAll(TransformCsvRoot.zonasTable.values());
+//        TransformPolo.update("src/main/resources/polos-sedes.csv");
+//        poloRepository.saveAll(TransformCsvRoot.polosTable.values());
+//        secaoRepository.saveAll(secoes);
+//        return "home";
+//    }
 
     @GetMapping("home")
     public String home(Model model){
