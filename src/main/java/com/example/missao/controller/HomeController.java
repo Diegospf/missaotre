@@ -45,9 +45,9 @@ public class HomeController {
 //        return "home";
 //    }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(Model model){
-        return "index";
+        return "redirect:/search/zona";
     }
 
 }

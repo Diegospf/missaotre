@@ -8,6 +8,18 @@
         <div class="card-header text-bg-secondary h4 pt-2 pb-2 text-left">
             <div>Polo: <span th:text="${idPolo}"></span>: Informações Completas</div>
         </div>
+
+        <table class="table">
+            <thead>
+            <th>Município Sede</th>
+            <th>Código TSE</th>
+            </thead>
+            <tbody>
+            <td scope="row" th:text="${polo.sede.nome}"></td>
+            <td scope="row" th:text="${polo.sede.codTse}">1</td>
+            </tbody>
+        </table>
+
         <table class="table">
             <thead>
             <th>Quantidade de Seções</th>

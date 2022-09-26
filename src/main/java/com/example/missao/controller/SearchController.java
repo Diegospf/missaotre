@@ -82,8 +82,10 @@ public class SearchController {
     public  String municipioSrc(@Valid RequisicaoMunicipio requisicao, Model model){
         Long codTse = requisicao.getCodTse();
         Municipio m = municipioRepository.findCidade(codTse);
+        Long qntSecoesMunicipio = secaoRepository.qntSecoesPorMunicipio(requisicao.getCodTse());
         model.addAttribute("municipio", m);
         model.addAttribute("codTse",  codTse);
+        model.addAttribute("qntSecoesMunicipio",  qntSecoesMunicipio);
         if(requisicao.getTipoDaPesquisa().equals("todos")){
             List<Secao> secoesPorMunicipio = secaoRepository.secoesPorMunicipio(requisicao.getCodTse());
             model.addAttribute("secoesPorMunicipio",  secoesPorMunicipio);
@@ -94,8 +96,6 @@ public class SearchController {
             model.addAttribute("zonasPorMunicipio",  zonasPorMunicipio);
             return "search/municipio/zonaByMunicipio";
         } else if(requisicao.getTipoDaPesquisa().equals("secao")){
-            Long qntSecoesMunicipio = secaoRepository.qntSecoesPorMunicipio(requisicao.getCodTse());
-            model.addAttribute("qntSecoesMunicipio",  qntSecoesMunicipio);
             List<Secao> secoesPorMunicipio = secaoRepository.secoesPorMunicipio(requisicao.getCodTse());
             model.addAttribute("secoesPorMunicipio",  secoesPorMunicipio);
             return "search/municipio/secaoByMunicipio";

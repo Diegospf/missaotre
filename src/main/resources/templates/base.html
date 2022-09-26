@@ -27,7 +27,7 @@
 
         .table-responsive {
             overflow-y: scroll;
-            max-height: 60vh;
+            max-height: 50vh;
         }
            .colorir{
              color: white;
@@ -36,7 +36,9 @@
             color: yellow;
             transition-duration: .5s;
         }
-
+        .navegacao{
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -50,21 +52,27 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-lg bg-success mb-4">
-        <div class="container-fluid">
+        <div class="container-fluid text-center">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse navegacao row align-items-start" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link colorir" aria-current="page" href="/search/zona">Zona</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link colorir" href="/search/municipio">Município</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link colorir" href="/search/polo">Polo</a>
-                    </li>
+                    <div class="col">
+                        <li class="nav-item">
+                            <a class="nav-link colorir col" aria-current="page"  href="/search/zona">Zona</a>
+                        </li>
+                    </div>
+                    <div class="col">
+                        <li class="nav-item">
+                            <a class="nav-link colorir col" href="/search/municipio">Município</a>
+                        </li>
+                    </div>
+                    <div class="col">
+                        <li class="nav-item">
+                            <a class="nav-link colorir col" href="/search/polo">Polo</a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>
