@@ -2,25 +2,27 @@
 <html lang="en">
 <head th:replace="~{base :: head}"></head>
 <body>
-<div th:replace="~{base :: logo}"></div>
-<div class="container">
-    <div class="card">
-        <div class="card-header text-bg-secondary h4 pt-2 pb-2 text-left">
-            <div>Município <span th:text="${municipio.codTse}"></span> - <span th:text="${municipio.nome}"></span>: Todas as Zonas</div>
-        </div>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Zonas</th>
-                </tr>
-                </thead>
-                <tbody>
+<div class="lateral">
+    <div th:replace="~{base :: logo}"></div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-bg-secondary h4 pt-2 pb-2 text-left">
+                <div>Município <span th:text="${municipio.codTse}"></span> - <span th:text="${municipio.nome}"></span>: Todas as Zonas</div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Zonas</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr th:each="zona : ${zonasPorMunicipio}">
                         <th scope="row" th:text="${zona.numero}">1</th>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

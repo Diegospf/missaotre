@@ -2,19 +2,21 @@
 <html lang="en">
 <head th:replace="~{base :: head}"></head>
 <body>
-<div th:replace="~{base :: logo}"></div>
-<div class="container">
-  <div class="card">
-    <div class="card-header text-bg-secondary h4 pt-2 pb-2 text-left">
-      <div>Zona <span th:text="${zona.numero}"></span>: Quantidade de Seções</div>
-    </div>
-    <div class="table-responsive">
-      <table class="table">
-        <tbody>
-        <th>Quantidade de Seções</th>
-        <th scope="row" th:text="${totalQnt}">1</th>
-        </tbody>
-      </table>
+<div class="lateral">
+  <div th:replace="~{base :: logo}"></div>
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-bg-secondary h4 pt-2 pb-2 text-left">
+        <div>Zona <span th:text="${zona.numero}"></span>: Quantidade de Seções</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+          <th>Quantidade de Seções</th>
+          <th scope="row" th:text="${totalQnt}">1</th>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

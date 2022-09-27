@@ -2,40 +2,42 @@
 <html lang="en">
 <head th:replace="~{base :: head}"></head>
 <body>
-    <div th:replace="~{base :: logo}"></div>
-    <div class="container">
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between">
-                <div>Consultar por Polo: </div>
-            </div>
-            <div class="d-grid gap-0 col-8 mx-auto pb-4">
-                <form th:object="${requisicaoPolo}" th:action="@{/search/polo/poloSrc}" method="GET">
-                    <div class="d-flex align-items-start row">
-                        <div class="text-bg-secondary h4 mt-3 mb-0 pt-2 pb-2 text-left rounded-top">
-                            Polo
-                        </div>
-                        <select th:field="*{numeroPolo}" class="mt-0 form-select form-select-sm form-control" name="stockType" aria-label="Default select example rounded-3">
-                            <option th:value="none" selected disabled hidden>Selecione o Polo</option>
-                            <option  th:each="polo : ${polos}" th:text="${polo.numero}" th:value="${polo.numero}">One</option>
-                        </select>
+    <div class="lateral">
+        <div th:replace="~{base :: logo}"></div>
+        <div class="container m-2">
+            <div class="card mb-3 col-md-8 col-lg-5">
+                <div class="card-header d-flex justify-content-between">
+                    <div>Consultar por Polo: </div>
+                </div>
+                <div class="card-body mx-auto pb-4">
+                    <form th:object="${requisicaoPolo}" th:action="@{/search/polo/poloSrc}" method="GET">
+                        <div class="d-flex align-items-start row mx-0">
+                            <div class="px-0 h6 mb-0 pt-1 pb-1 text-left rounded-top">
+                                Escolha o Polo:
+                            </div>
+                            <select th:field="*{numeroPolo}" class="mt-0 form-select form-select-sm form-control" name="stockType" aria-label="Default select example rounded-3">
+                                <option th:value="none" selected disabled hidden>Selecione o Polo</option>
+                                <option  th:each="polo : ${polos}" th:text="${polo.numero}" th:value="${polo.numero}">One</option>
+                            </select>
 
-                        <div class="text-bg-secondary h4 mt-3 mb-0 pt-2 pb-2 text-left rounded-top">
-                            Qual informação deseja acessar?
-                        </div>
-                        <select th:field="*{tipoDaPesquisa}" class="mt-0 form-select form-select-sm form-control" name="stockType" aria-label="Default select example rounded-3">
-                            <option th:value="none" selected disabled hidden>Selecione o resultado que espera</option>
-                            <option  th:value="todos">Informações completas</option>
-                            <option  th:value="municipio">Todos os município</option>
-                            <option  th:value="secao">Quantidade de seções</option>
-                            <option  th:value="zona">Todas as zonas</option>
-                            <option th:value="sede">Município Sede</option>
-                        </select>
+                            <div class="px-0 h6 mt-3 mb-0 pt-1 pb-1 text-left rounded-top">
+                                Escolha a pesquisa:
+                            </div>
+                            <select th:field="*{tipoDaPesquisa}" class="mt-0 form-select form-select-sm form-control" name="stockType" aria-label="Default select example rounded-3">
+                                <option th:value="none" selected disabled hidden>Selecione o resultado que espera</option>
+                                <option  th:value="todos">Informações completas</option>
+                                <option  th:value="municipio">Todos os município</option>
+                                <option  th:value="secao">Quantidade de seções</option>
+                                <option  th:value="zona">Todas as zonas</option>
+                                <option th:value="sede">Município Sede</option>
+                            </select>
 
-                        <div class="d-grid gap-2 col-8 mx-auto">
-                            <button type="submit" class="mt-4 btn btn-warning">Pesquisar</button>
+                            <div class="d-grid gap-2 col-4 px-0">
+                                <button type="submit" class="mt-4 btn btn-warning">Pesquisar</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

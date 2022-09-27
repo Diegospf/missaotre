@@ -7,8 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="/logotre.png"/>
-
+    <link rel="icon" type="imagem/png" href="/logotre.png" />
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <style>
         .logo-container {
@@ -19,6 +18,7 @@
         .logo {
             font-family: 'Ubuntu', sans-serif;
             font-size: 2.5em;
+            line-height:2;
             color: #FFFFFF;
         }
 
@@ -40,12 +40,40 @@
         .navegacao{
             font-size: 20px;
         }
+
+        .lateral{
+              max-width: 1230px;
+              min-width:300px;
+              margin-left: auto;
+              margin-right: auto;
+              height: 100vh;
+              background-color: white;
+        }
+
+        body{
+            background-color: #f7f7f7;
+        }
+
+        @media only screen and (max-width: 850px) {
+             .logo{
+                font-size: 30px;
+                line-height:2.5;
+             }
+        }
+
+        @media only screen and (max-width: 720px) {
+             .logo{
+                font-size: 19px;
+                line-height:3.7;
+             }
+        }
+
     </style>
 </head>
 
 <div th:fragment="logo">
-    <div class="logo-container p-3 d-flex justify-content-between">
-        <div class="col-1">
+    <div class="logo-container p-3 d-flex">
+        <div style="margin-right: 20px;">
             <a href="/"><img class="img-fluid" style="max-width: 100px;" src="/logotre.png"></a>
         </div>
         <div class="col-8 col-xl-11 col-lg-10 col-md-9 align-middle">
@@ -53,27 +81,21 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-lg bg-success mb-4">
-        <div class="container-fluid text-center">
+        <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse navegacao row align-items-start" id="navbarNav">
+            <div class="collapse navbar-collapse navegacao" id="navbarNav">
                 <ul class="navbar-nav">
-                    <div class="col">
-                        <li class="nav-item">
-                            <a class="nav-link colorir col" aria-current="page"  href="/search/zona">Zona</a>
-                        </li>
-                    </div>
-                    <div class="col">
-                        <li class="nav-item">
-                            <a class="nav-link colorir col" href="/search/municipio">Município</a>
-                        </li>
-                    </div>
-                    <div class="col">
-                        <li class="nav-item">
-                            <a class="nav-link colorir col" href="/search/polo">Polo</a>
-                        </li>
-                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link colorir" href="/search/zona">Zona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link colorir" href="/search/municipio">Município</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link colorir" href="/search/polo">Polo</a>
+                    </li>
                 </ul>
             </div>
         </div>
